@@ -1,21 +1,18 @@
-// const { createServer } = require('node:http');
-
-// const hostname = '127.0.0.1';
-// const port = 3000;
-
-// const server = createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end('Hello World');
-// });
-
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
-
 var http = require('http');
 var server = http.createServer(function (req, res) {
-    res.end('Hello World');
+    if(req.url =="/") {
+        res.writeHead(200, { 'Content-Type': "text/html" });
+        res.write('<h1>This home page</h1>');
+        res.end();
+    }else if(req.url=="/about") {
+        res.writeHead(200, { 'Content-Type': "text/html" });
+        res.write('<h1>This about page</h1>');
+        res.end();
+    }else if(req.url=="/contact") {
+        res.writeHead(200, { 'Content-Type': "text/html" });
+        res.write('<h1>This contact page</h1>');
+        res.end();
+    }
 });
 
 server.listen(8080);
